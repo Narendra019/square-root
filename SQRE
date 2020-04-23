@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+wr=np.array
+r=np.array
+p=np.array
+q=np.array
+plt.xkcd()
+fig,ax= plt.subplots()  
+p=int(input("Ent+r the number"))
+q=p**2
+x=np.linspace(0,1000)
+
+plt.xlim(0,q)
+plt.ylim(0,q)
+plt.xlabel("p value",size=10,color="red")
+plt.ylabel("q value",size=10,color="blue")
+redDot,=ax.plot([p],[q],'ro',markersize=5)
+plt.title("SQUARE ROOT: " +str(q),size=35)
+def animate(i):
+    redDot.set_data(i,i)
+    return redDot,
+    
+myAnimation= animation.FuncAnimation(fig, animate,frames=len(x),interval=200,blit=True,repeat=True)
+plt.show()
